@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-primary: #333333;
+  --text-secondary: #707070;
+  --text-medium: #555;
+  --text-on-dark-bg: #ffffff;
+
+  --cta-color: #f69946;
+  --cta-hover: #c4661a;
+
+  --accent-color: #a9c623;
+  --accent-hover: #94af16;
+
+  --bg-light: #fbf4f0;
+  --bg-link: #a49d98;
+
+  --border-on-light-bg: #c5cbd6;
+
+  --error-color: red;
+
+  --icon-fill: #fff;
+
+  --orange-primary: #f69946;
+  --tax: radial-gradient(30rem at 50% 50%, #104d82 0, #234161 100%);
+
+  --bs-nav-link-color: 6 var(--text-on-dark-bg);
+
+  scroll-behavior: smooth;
+}
+
+.nav-link.dropdown-toggle.text-info {
+  color: var(--text-primary);
+}
+
+body {
+  font-family: "Source Sans 3";
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Istok Web", sans-serif;
+  color: var(--text-dark);
+}
+
+ul,
+ol {
+  padding: 0;
+}
+
+.main-wrapper {
+  width: 100%;
+  max-width: 320px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab-pane {
+  display: block;
+}
+
+.tab-content {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Target the tab panes that have the .fade class */
+.tab-pane.fade {
+  /* Add transform to the list of properties being transitioned */
+  transition: opacity 0.3s linear, transform 0.3s ease-in-out;
+  /* When not active, the pane will be invisible and slightly to the right */
+  transform: translateX(20px);
+  opacity: 0;
+}
+
+/* When a tab pane becomes active, it gets the .show class */
+.tab-pane.fade.show {
+  /* Animate it back to its normal position and make it fully visible */
+  transform: translateX(0);
+  opacity: 1;
+}
+
+#finance-tab h3 {
+  background-color: var(--cta-color);
+}
+#declaratio-tab h3 {
+  background-color: var(--accent-hover);
+}

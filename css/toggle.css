@@ -1,0 +1,126 @@
+@import url("https://unpkg.com/normalize.css") layer(normalize);
+
+@layer normalize, base, demo, flip;
+
+@layer flip {
+  :root {
+    --primary: light-dark(hsl(0 0% 10%), #fff);
+    --secondary: canvas;
+    --inactive: light-dark(hsl(0 0% 60%), hsl(0 0% 50%));
+    --duration: 0.22;
+    --ease: ease-out;
+    --border: light-dark(hsl(0 0% 80%), hsl(0 0% 60%));
+    --shadow-color: 0deg 0% 63%;
+    @media (prefers-color-scheme: dark) {
+      --shadow-color: 0deg 0% 0%;
+    }
+  }
+
+  /* --- Main animation logic for the indicator and labels --- */
+  .control__track:has(#received:checked) .indicator {
+    translate: 0 0;
+  }
+
+  .control__track:has(#tax-form:checked) .indicator {
+    translate: 100% 0;
+  }
+
+  .control label {
+    color: var(--inactive);
+    transition: color calc(var(--duration) * 1s) var(--ease);
+  }
+
+  .control__track:has(#received:checked) label[for="received"],
+  .control__track:has(#tax-form:checked) label[for="tax-form"] {
+    color: var(--secondary);
+  }
+
+  .indicator {
+    transition: translate calc(var(--duration) * 1s) var(--ease);
+  }
+}
+
+@layer demo {
+  .indicator {
+    position: absolute;
+    width: 50%; /* Set to 50% for a two-item layout */
+    left: 0;
+
+    top: 0;
+    bottom: 0;
+    background: var(--primary);
+    border-radius: 100px;
+    z-index: 1; /* Ensure indicator is behind the text */
+  }
+
+  .control {
+    scale: 1.2;
+    letter-spacing: 0.5px;
+    position: relative;
+    width: 260px;
+    height: 38px;
+    background: var(--secondary);
+    border-radius: 100px;
+    border: 2px solid var(--border);
+    padding: 2px;
+    box-shadow: -0.1px 1px 1px hsl(var(--shadow-color) / 0.39),
+      -0.2px 3.2px 3.1px -0.4px hsl(var(--shadow-color) / 0.36),
+      -0.3px 5.7px 5.5px -0.8px hsl(var(--shadow-color) / 0.34),
+      -0.5px 9.3px 8.9px -1.2px hsl(var(--shadow-color) / 0.32),
+      -0.8px 14.8px 14.2px -1.6px hsl(var(--shadow-color) / 0.29),
+      -1.3px 23.1px 22.2px -2px hsl(var(--shadow-color) / 0.27),
+      -2px 35px 33.7px -2.4px hsl(var(--shadow-color) / 0.24),
+      -2.9px 51.2px 49.2px -2.8px hsl(var(--shadow-color) / 0.22),
+      -4.1px 72.6px 69.8px -3.2px hsl(var(--shadow-color) / 0.2),
+      -5.6px 100px 96.2px -3.6px hsl(var(--shadow-color) / 0.17);
+  }
+
+  .control__track {
+    display: grid;
+    place-items: center;
+    /* Changed to 2 columns for the two options */
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .control label {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    font-size: 0.75rem;
+    z-index: 2; /* Ensure labels are on top of the indicator */
+  }
+}
+
+@layer base {
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
+
+  body {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue",
+      Helvetica, Arial, sans-serif, system-ui;
+    background-color: var(--secondary);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
