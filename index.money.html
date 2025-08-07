@@ -3,26 +3,37 @@
   id="money-content"
   role="tabpanel"
 >
-  <h2>💰 Money Received</h2>
+  <h2>💸 Money Received</h2>
+
+  <div class="money-input container">
+    <input type="date" class="form-control" />
+    <input type="text" />
+    <button class="btn bg-black text-light">Add</button>
+  </div>
+
   <table class="table">
     <thead>
       <tr>
         <th scope="col">Date</th>
         <th scope="col">Sum</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th scope="row">01 04</th>
         <td>2000</td>
+        <td class="edit">✏️ 🗑️</td>
       </tr>
       <tr>
         <th scope="row">03 04</th>
         <td>3000</td>
+        <td class="edit">✏️ 🗑️</td>
       </tr>
       <tr>
         <th scope="row">15 04</th>
         <td>1500</td>
+        <td class="edit">✏️ 🗑️</td>
       </tr>
     </tbody>
   </table>

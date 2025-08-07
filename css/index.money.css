@@ -1,0 +1,6 @@
+.money-input {
+  display: flex;
+  padding: 30px;
+  max-height: 90px;
+  gap: 10px;
+}
